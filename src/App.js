@@ -1,8 +1,12 @@
-import { Navbar } from './Components/index'
+import { Header, Form, ListContainer } from './Components/index'
 
 function App() {
   return (
-    <Navbar />
+    <main>
+      <Header />
+      <Form />
+      <ListContainer />
+    </main>
   );
 }
 export default App;

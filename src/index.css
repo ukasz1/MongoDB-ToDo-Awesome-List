@@ -30,3 +30,7 @@ main {
 .form-description {
   width: 500px;
 }
+
+.aspect {
+  padding: 10px;
+}

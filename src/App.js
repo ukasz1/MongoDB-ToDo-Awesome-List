@@ -2,11 +2,13 @@ import { Header, Form, ListContainer } from './Components/index'
 
 function App() {
   return (
-    <main>
-      <Header />
-      <Form />
+    <>
+      <main>
+        <Header />
+        <Form />
+      </main>
       <ListContainer />
-    </main>
+    </>
   );
 }
 export default App;

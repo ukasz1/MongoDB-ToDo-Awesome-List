@@ -1,10 +1,12 @@
-export const ListContainer = () => {
+import { connect } from 'react-redux'
+
+const ListContainer = ({ loading }) => {
   return <section className="list-container">
     <table>
       <TabHeader />
       <TabList />
     </table>
-    <EmptyList />
+    {loading && <EmptyList />}
   </section>
 }
 
@@ -24,7 +26,7 @@ const TabHeader = () => {
   )
 }
 
-// export { ListContainer };
+export { ListContainer };
 
 const TabList = () => {
   return (
@@ -40,5 +42,12 @@ const EmptyList = () => {
   )
 }
 
+const mapStateToProps = (state) => {
+  return { loading: state.loading }
+}
+
+export default connect(mapStateToProps)(ListContainer)
+
+// export default ListContainer
 
 

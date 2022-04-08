@@ -34,6 +34,7 @@ main {
 /* -------- form --------*/
 
 .form-container {
+  background: #fafbfc;
   padding: 20px;
   width: 800px;
   margin: 0 auto;
@@ -93,7 +94,7 @@ h5 {
 /* -------- list container --------*/
 .list-container {
   border-top: 1px solid grey;
-  background: white;
+  background: #fff;
 }
 
 table {

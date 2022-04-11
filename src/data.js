@@ -1,5 +1,5 @@
 /* example data */
-const data = [
+export default [
   {
     id: 1,
     task: 'Praca',
@@ -42,5 +42,4 @@ const data = [
       minute: '00'
     }
   }
-
 ];

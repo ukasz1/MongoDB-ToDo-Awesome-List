@@ -6,7 +6,7 @@ import { Header, Form, ListContainer } from './Components/index'
 import reducer from './reducer';
 
 const initialStore = {
-  loading: false
+  loading: true
 }
 
 const store = createStore(reducer, initialStore);

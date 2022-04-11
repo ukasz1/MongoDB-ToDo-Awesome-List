@@ -1,5 +1,5 @@
 const reducer = (state, action) => {
-  if (action.type === 'kasuj') {
+  if (action.type === 'loaded') {
     return { ...state, loading: false }
   }
 

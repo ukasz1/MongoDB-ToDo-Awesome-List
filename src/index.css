@@ -18,7 +18,8 @@ body {
 }
 
 main {
-  background-color: #f0f2f5;
+  background-color: #ebf9fa;
+  /*#f0f2f5*/
   margin: 0 auto;
   /* width: 800px; */
 }
@@ -100,22 +101,35 @@ h5 {
 table {
   width: 95%;
   margin: 0 auto;
-  border-spacing: 1px;
+}
+
+tr {
+  border-bottom: 1px dashed grey;
 }
 
 th {
+  border-spacing: 1px;
   height: 30px;
   border: 1px solid grey;
   font-size: 0.9em;
   border-radius: 5px;
+  text-align: center;
 }
+
+td {
+  height: 35px;
+  border: 1px solid grey;
+  /* border-bottom: 1px dashed grey; */
+  font-size: 0.9em;
+  border-radius: 5px;
+  text-align: center;
+}
+
 
 .data-feedback {
   text-align: center;
   width: 100%;
-  padding-top: 4%;
   color: rgb(128, 208, 255);
-  /* border: 1px solid green; */
 }
 
 .data-feedback h1 {

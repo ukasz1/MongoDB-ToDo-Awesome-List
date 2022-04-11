@@ -1,12 +1,12 @@
 import { connect } from 'react-redux'
+import loadingIcon from '../images/loading.gif'
 
 const ListContainer = ({ loading }) => {
   return <section className="list-container">
     <table>
       <TabHeader />
-      <TabList />
+      <TabList loading={loading} />
     </table>
-    {loading && <EmptyList />}
   </section>
 }
 
@@ -28,16 +28,20 @@ const TabHeader = () => {
 
 export { ListContainer };
 
-const TabList = () => {
+const TabList = ({ loading }) => {
   return (
-    <div></div>
+    <tr>
+      <td colspan="7">
+        {loading && <EmptyList />}
+      </td>
+    </tr>
   )
 }
 
 const EmptyList = () => {
   return (
-    <div className="empty-list">
-      <h1>Lista jest pusta</h1>
+    <div className="data-feedback">
+      <h1><img src={loadingIcon} alt="loading" /></h1>
     </div>
   )
 }

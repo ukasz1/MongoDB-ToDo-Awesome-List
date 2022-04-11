@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
 import loadingIcon from '../images/loading.gif'
 
-const ListContainer = ({ loading }) => {
+const ListContainer = ({ loading, dispatch }) => {
   return <section className="list-container">
     <table>
       <TabHeader />
-      <TabList loading={loading} />
+      <TabList loading={loading} dispatch={dispatch} />
     </table>
   </section>
 }
@@ -28,20 +28,23 @@ const TabHeader = () => {
 
 export { ListContainer };
 
-const TabList = ({ loading }) => {
+const TabList = ({ loading, dispatch }) => {
   return (
-    <tr>
-      <td colspan="7">
-        {loading && <EmptyList />}
-      </td>
-    </tr>
+    <tbody>
+      <tr>
+        <td colSpan="7">
+          {loading && <EmptyList dispatch={dispatch} />}
+        </td>
+      </tr>
+    </tbody>
   )
 }
 
-const EmptyList = () => {
+const EmptyList = ({ dispatch }) => {
   return (
     <div className="data-feedback">
-      <h1><img src={loadingIcon} alt="loading" /></h1>
+      {/* <button type="button" onClick={() => dispatch({ type: 'kasuj' })}>Koniec</button> */}
+      <h1><img src={loadingIcon} alt="loadingIcon" /></h1>
     </div>
   )
 }
@@ -51,7 +54,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(ListContainer)
-
-// export default ListContainer
 
 

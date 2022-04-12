@@ -33,7 +33,12 @@ const TabList = ({ loading, dispatch }) => {
   const [events, setEvents] = useState(data);
   useEffect(() => {
     setTimeout(() => dispatch({ type: 'loaded' }), 750) // for data fetching simulation
-  }, [])
+  }, []);
+
+  const deleteEvent = id => {
+    const newEvents = events.filter(event => event.id !== id);
+    setEvents(newEvents);
+  }
   return (
     <tbody>
       {loading ? (
@@ -59,7 +64,7 @@ const TabList = ({ loading, dispatch }) => {
               <td>{date.day}/{date.month}/{date.year}</td>
               <td>{time.hour}:{time.minute}</td>
               <td>Do obliczenia</td>
-              <td><FaTrash style={{ color: 'pink' }} /></td>
+              <td><FaTrash className='fa-trash' onClick={() => deleteEvent(id)} /></td>
             </tr>
           )
         })
@@ -72,7 +77,6 @@ const TabList = ({ loading, dispatch }) => {
 const EmptyList = ({ dispatch }) => {
   return (
     <div className="data-feedback">
-      {/* <button type="button" onClick={() => dispatch({ type: 'kasuj' })}>Koniec</button> */}
       <h1><img src={loadingIcon} alt="loadingIcon" /></h1>
     </div>
   )

@@ -14,9 +14,21 @@ const months = [
   'listopad',
   'grudzień'
 ]
-const years = ['Rok', 2022, 2023, 2024, 2025]
+const years = ['Rok', 2022, 2023, 2024, 2025];
+
+const headerCells = [
+  'Nr',
+  'Rodzaj',
+  'Zadanie',
+  'Data',
+  'Godzina',
+  'Pozostały czas',
+  'Skasuj'
+];
+
 
 export {
+  headerCells,
   days,
   months,
   years

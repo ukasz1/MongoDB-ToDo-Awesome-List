@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { FaTrash } from 'react-icons/fa'
-import data from '../data'
 import { headerCells } from '../utils'
 import { connect } from 'react-redux'
 import loadingIcon from '../images/loading.gif'
+
+const url = '/api';
 
 const ListContainer = ({ loading, dispatch }) => {
   return <section className="list-container">
@@ -27,10 +28,25 @@ const TabHeader = () => {
 }
 
 const TabList = ({ loading, dispatch }) => {
-  const [events, setEvents] = useState(data);
+  const [events, setEvents] = useState([]);
+
+  const fetchData = async () => {
+    // dispatch({type: 'LOADING'});
+
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      // console.log(data);
+      dispatch({ type: 'LOADED' })
+      setEvents(data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   useEffect(() => {
-    setTimeout(() => dispatch({ type: 'loaded' }), 750) // for data fetching simulation
-  }, []);
+    fetchData();
+  }, [])
 
   const deleteEvent = id => {
     const newEvents = events.filter(event => event.id !== id);
@@ -38,7 +54,7 @@ const TabList = ({ loading, dispatch }) => {
   }
   return (
     <tbody>
-      {loading ? (                //loading data
+      {loading ? (                //loading icon
         <DataFeedback>
           <img src={loadingIcon} alt="loadingIcon" />
         </DataFeedback>

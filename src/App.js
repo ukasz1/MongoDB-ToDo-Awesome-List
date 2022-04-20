@@ -5,6 +5,8 @@ import { Header, Form, ListContainer } from './Components/index'
 
 import reducer from './reducer';
 
+const url = '/api';
+
 const initialStore = {
   loading: true
 }
@@ -18,7 +20,7 @@ function App() {
         <Header />
         <Form />
       </main>
-      <ListContainer />
+      <ListContainer url={url} />
     </Provider>
   );
 }

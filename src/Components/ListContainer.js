@@ -4,13 +4,11 @@ import { headerCells } from '../utils'
 import { connect } from 'react-redux'
 import loadingIcon from '../images/loading.gif'
 
-const url = '/api';
-
-const ListContainer = ({ loading, dispatch }) => {
+const ListContainer = ({ loading, dispatch, url }) => {
   return <section className="list-container">
     <table>
       <TabHeader />
-      <TabList loading={loading} dispatch={dispatch} />
+      <TabList loading={loading} dispatch={dispatch} url={url} />
     </table>
   </section>
 }
@@ -27,7 +25,7 @@ const TabHeader = () => {
   )
 }
 
-const TabList = ({ loading, dispatch }) => {
+const TabList = ({ loading, dispatch, url }) => {
   const [events, setEvents] = useState([]);
 
   const fetchData = async () => {

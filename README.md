@@ -9,8 +9,9 @@ This project is based on my previous one that was written in simple JS and PHP. 
 - Starting point for a fullstack MERN project (MongoDB, Express, React, NodeJS)
 
 ## Current state
-- Graphic layout
-- Fetching data from the API
+- Graphic layout - <b>completed</b>
+- Fetching data from the API - <b>completed</b>
+- Data validation and submitting the form - <i>ToDo</i>
 <img src="https://github.com/ukasz1/essentials/blob/main/todo-awesome-list/todo-view.JPG?raw=true" width="90%" />
 
 ## Run project

@@ -1,12 +1,14 @@
 # ToDo Awesome List (Front-end)
-A React app with Redux and my own <a href="https://github.com/ukasz1/ToDo-Awesome-List-API">API</a>. The API is a separate project to work independently.
+A part of a MERN project. This is a React app with Redux. 
+
+This is my current project I'm working on right now. When finished, it will be a todo list for a single user. The app is going to show a planned activities, with its description and deadline. There is also a form for submitting new activities. The data will be stored in the database with using my own <a href="https://github.com/ukasz1/ToDo-Awesome-List-API">API</a>. The API is a separate project to work independently.
 
 This project is based on my previous one that was written in simple JS and PHP. You can <a href="https://github.com/ukasz1/PHP_TODO_list">find it here</a>👈
 
 ## Goals
 - Practicing React
 - Gaining new skills in Redux
-- Starting point for a fullstack MERN project (MongoDB, Express, React, NodeJS)
+- A part of a MERN project (MongoDB, Express, React, NodeJS)
 
 ## Current state
 - Graphic layout - <b>completed</b>

@@ -169,3 +169,9 @@ td {
 .th7 {
   width: 5%;
 }
+
+.err-msg {
+  color: red;
+  padding: 5px;
+  /* font-weight: bold; */
+}

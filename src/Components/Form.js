@@ -1,5 +1,5 @@
 import { days, months, years } from '../utils'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const Form = () => {
   const [newEvent, setNewEvent] = useState({
@@ -16,8 +16,40 @@ const Form = () => {
     setNewEvent({ ...newEvent, [e.target.name]: e.target.value })
   }
 
+  const [descriptionError, setDescriptionError] = useState(false);
+  const [dateError, setDateError] = useState(false);
+  const [timeError, setTimeError] = useState(false);
+
+  const validateForm = (e) => {
+    if (newEvent.description === '') {
+      setDescriptionError(true);
+      e.preventDefault();
+    }
+    else {
+      setDescriptionError(false);
+    }
+    if (newEvent.day === '' || newEvent.month === '' || newEvent.year <= '2021') {
+      setDateError(true);
+      e.preventDefault();
+    }
+    else {
+      setDateError(false);
+    }
+    if (newEvent.description === '') {
+      setDescriptionError(true);
+      e.preventDefault();
+    }
+    else {
+      setDescriptionError(false);
+    }
+
+  }
+
+
   const submitForm = (e) => {
     e.preventDefault();
+    validateForm(e);
+
     console.log(`formularz wysłany:
       desc: ${newEvent.description}
       task: ${newEvent.task}
@@ -26,7 +58,10 @@ const Form = () => {
       year: ${newEvent.year}
       hour: ${newEvent.hour}
       minute: ${newEvent.minute}
+
+      descriptionError: ${descriptionError}
       `);
+
   }
 
   return <section className="form-container">
@@ -42,6 +77,7 @@ const Form = () => {
           value={newEvent.description}
           onChange={fillInForm}
         />
+        {descriptionError ? <span className='err-msg'>Opis nie może być pusty!</span> : null}
       </div>
       <div className="aspect">
         <label htmlFor="task">Rodzaj zadania </label>
@@ -94,6 +130,7 @@ const Form = () => {
             return <option key={index} value={index + 2021}>{year}</option>
           })}
         </select>
+        {dateError ? <span className='err-msg'>Niepoprawna data!</span> : null}
       </div>
 
       <div className='aspect'>

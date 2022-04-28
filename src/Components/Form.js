@@ -1,5 +1,6 @@
 import { days, months, years } from '../utils'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import moment from 'moment'
 
 const Form = () => {
   const [newEvent, setNewEvent] = useState({
@@ -11,62 +12,72 @@ const Form = () => {
     hour: '',
     minute: ''
   });
-
   const fillInForm = (e) => {
     setNewEvent({ ...newEvent, [e.target.name]: e.target.value })
   }
-
   const [descriptionError, setDescriptionError] = useState(false);
   const [dateError, setDateError] = useState(false);
-  const [timeError, setTimeError] = useState(false);
+  const [hourError, setHourError] = useState(false);
+  const [minuteError, setMinuteError] = useState(false);
 
-  const validateForm = (e) => {
-    if (newEvent.description === '') {
+
+  const descriptionCheck = () => {
+    if (newEvent.description.trim() === '') {
       setDescriptionError(true);
-      e.preventDefault();
     }
     else {
       setDescriptionError(false);
     }
-    if (newEvent.day === '' || newEvent.month === '' || newEvent.year <= '2021') {
+  }
+  const hourCheck = () => {
+    const hourNumber = Number(newEvent.hour);
+    if (newEvent.hour === '' || hourNumber < 0 || hourNumber > 23) {
+      setHourError(true);
+    }
+    else {
+      setHourError(false);
+    }
+  }
+  const minuteCheck = () => {
+    const minuteNumber = Number(newEvent.minute);
+    if (newEvent.minute === '' || minuteNumber < 0 || minuteNumber > 59) {
+      setMinuteError(true);
+    }
+    else {
+      setMinuteError(false);
+    }
+  }
+  const validateAndSubmitForm = (e) => {
+    if (descriptionError || hourError || minuteError) {
+      console.log(`
+      desc: ${newEvent.description}
+      task: ${newEvent.task}
+        day: ${newEvent.day}
+        month: ${newEvent.month}
+        year: ${newEvent.year}
+        hour: ${newEvent.hour}
+        minute: ${newEvent.minute}
+        
+        descriptionError: ${descriptionError}
+        dateError: ${dateError}
+        hourError: ${hourError}
+        minuteError: ${minuteError}
+        `);
+      e.preventDefault();
+      return;
+    }
+    if (Number(newEvent.day) < 1 || Number(newEvent.month) < 1 || Number(newEvent.year) <= 2021) {
       setDateError(true);
       e.preventDefault();
     }
     else {
       setDateError(false);
+      e.target.submit();
     }
-    if (newEvent.description === '') {
-      setDescriptionError(true);
-      e.preventDefault();
-    }
-    else {
-      setDescriptionError(false);
-    }
-
   }
-
-
-  const submitForm = (e) => {
-    e.preventDefault();
-    validateForm(e);
-
-    console.log(`formularz wysłany:
-      desc: ${newEvent.description}
-      task: ${newEvent.task}
-      day: ${newEvent.day}
-      month: ${newEvent.month}
-      year: ${newEvent.year}
-      hour: ${newEvent.hour}
-      minute: ${newEvent.minute}
-
-      descriptionError: ${descriptionError}
-      `);
-
-  }
-
   return <section className="form-container">
     <h5>Aby wprowadzić nowy event uzupełnij opis, określ deadline i naciśnij przycisk Dodaj.</h5>
-    <form className="event-form" onSubmit={submitForm}>
+    <form className="event-form" onSubmit={validateAndSubmitForm}>
       <div className="aspect">
         <label htmlFor="description">Opis </label>
         <input
@@ -76,6 +87,8 @@ const Form = () => {
           className="form-description"
           value={newEvent.description}
           onChange={fillInForm}
+          onBlur={descriptionCheck}
+          required
         />
         {descriptionError ? <span className='err-msg'>Opis nie może być pusty!</span> : null}
       </div>
@@ -94,7 +107,6 @@ const Form = () => {
           <option value="other">Inne</option>
         </select>
       </div>
-
       <div className="aspect">
         <label htmlFor="date">Data </label>
         <select
@@ -144,6 +156,8 @@ const Form = () => {
           className='form-time'
           value={newEvent.hour}
           onChange={fillInForm}
+          onBlur={hourCheck}
+          required
         />
         <input
           type="text"
@@ -154,7 +168,10 @@ const Form = () => {
           className='form-time'
           value={newEvent.minute}
           onChange={fillInForm}
+          onBlur={minuteCheck}
+          required
         />
+        {(hourError || minuteError) ? <span className='err-msg'>Niepoprawny czas!</span> : null}
       </div>
       <div className='form-submit-div'>
         <button type="submit" className='submit-button'>Dodaj</button>
@@ -163,5 +180,4 @@ const Form = () => {
     </form>
   </section >
 }
-
 export default Form;

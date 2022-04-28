@@ -42,18 +42,32 @@ main {
 }
 
 h1 {
+  font-size: 3em;
   margin: 0;
   padding: 0.83em;
+  padding-bottom: 0.05em;
+  color: rgb(0, 0, 113);
 }
 
 h5 {
   margin-top: 0;
 }
 
+.underline {
+  margin: 10px auto;
+  margin-bottom: 30px;
+  width: 150px;
+  border: 3px solid orange;
+}
+
 .form-container {
   border: 1px solid grey;
-  border-bottom: 0;
+
   border-radius: 5px;
+}
+
+.empty-line {
+  height: 15px;
 }
 
 .form-description {
@@ -148,7 +162,7 @@ td {
 
 .empty-list {
   padding-top: 60px;
-  /* border: 1px solid green; */
+  color: rgb(128, 208, 255)
 }
 
 .th1 {

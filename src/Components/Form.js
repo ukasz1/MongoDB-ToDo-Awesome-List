@@ -20,7 +20,6 @@ const Form = () => {
   const [hourError, setHourError] = useState(false);
   const [minuteError, setMinuteError] = useState(false);
 
-
   const descriptionCheck = () => {
     if (newEvent.description.trim() === '') {
       setDescriptionError(true);
@@ -72,7 +71,15 @@ const Form = () => {
     }
     else {
       setDateError(false);
-      e.target.submit();
+      const newEventDate = moment([newEvent.year, (newEvent.month - 1).toString(), newEvent.day]);
+      if (!newEventDate.isValid()) {  // checking number of days in month and leap year
+        setDateError(true);
+        e.preventDefault();
+      }
+      else {
+        setDateError(false);
+        e.target.submit();
+      }
     }
   }
   return <section className="form-container">

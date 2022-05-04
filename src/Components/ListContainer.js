@@ -65,16 +65,19 @@ const TabList = ({ loading, dispatch, url }) => {
               id,
               task,
               description,
-              date,
-              time
+              day,
+              month,
+              year,
+              hour,
+              minute
             } = event;
             return (
               <tr key={id}>
                 <td>{id}</td>
                 <td>{task}</td>
                 <td>{description}</td>
-                <td>{date.day}/{date.month}/{date.year}</td>
-                <td>{time.hour}:{time.minute}</td>
+                <td>{day}/{month}/{year}</td>
+                <td>{hour}:{minute}</td>
                 <td><EventTimeCounter {...event} /></td>
                 <td>
                   <button type="button" className='button-delete'>
@@ -101,14 +104,14 @@ const DataFeedback = ({ children }) => {
   )
 }
 
-const EventTimeCounter = ({ date, time }) => {
+const EventTimeCounter = ({ day, month, year, hour, minute }) => {
   const [timeTrigger, setTimeTrigger] = useState(true);
 
   useEffect(() => {
     setTimeout(() => setTimeTrigger(!timeTrigger), 1000)
   }, [timeTrigger])
 
-  const futureDate = moment([date.year, date.month - 1, date.day, time.hour, time.minute]);
+  const futureDate = moment([year, month - 1, day, hour, minute]);
   const currentTime = moment();
   const diff_In_Days = futureDate.diff(currentTime, 'days');
   const diff_In_Hours = futureDate.diff(currentTime, 'hours');

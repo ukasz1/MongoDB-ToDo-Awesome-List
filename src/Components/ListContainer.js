@@ -52,7 +52,7 @@ const TabList = ({ loading, dispatch, url }) => {
     <tbody>
       {loading ? (                //loading icon
         <DataFeedback>
-          <img src={loadingIcon} alt="loadingIcon" />
+          <img src={loadingIcon} alt="loadingIcon" width="160" />
         </DataFeedback>
       ) : (
         events.length === 0 ? (   //no data to show

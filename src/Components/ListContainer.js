@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { FaTrash } from 'react-icons/fa'
 import { headerCells } from '../utils'
 import { connect } from 'react-redux'
+import moment from 'moment'
 import loadingIcon from '../images/loading.gif'
 
 const ListContainer = ({ loading, dispatch, url }) => {
@@ -29,12 +30,9 @@ const TabList = ({ loading, dispatch, url }) => {
   const [events, setEvents] = useState([]);
 
   const fetchData = async () => {
-    // dispatch({type: 'LOADING'});
-
     try {
       const response = await fetch(url);
       const data = await response.json();
-      // console.log(data);
       dispatch({ type: 'LOADED' })
       setEvents(data);
     } catch (err) {
@@ -77,7 +75,7 @@ const TabList = ({ loading, dispatch, url }) => {
                 <td>{description}</td>
                 <td>{date.day}/{date.month}/{date.year}</td>
                 <td>{time.hour}:{time.minute}</td>
-                <td>(Do obliczenia)</td>
+                <td><EventTimeCounter {...event} /></td>
                 <td>
                   <button type="button" className='button-delete'>
                     <FaTrash className='fa-trash' onClick={() => deleteEvent(id)} />
@@ -101,6 +99,40 @@ const DataFeedback = ({ children }) => {
       </td>
     </tr>
   )
+}
+
+const EventTimeCounter = ({ date, time }) => {
+  const [timeTrigger, setTimeTrigger] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setTimeTrigger(!timeTrigger), 1000)
+  }, [timeTrigger])
+
+  const futureDate = moment([date.year, date.month - 1, date.day, time.hour, time.minute]);
+  const currentTime = moment();
+  const diff_In_Days = futureDate.diff(currentTime, 'days');
+  const diff_In_Hours = futureDate.diff(currentTime, 'hours');
+  const diff_In_Minutes = futureDate.diff(currentTime, 'minutes');
+  const diff_In_Seconds = futureDate.diff(currentTime, 'seconds');
+
+  const days = diff_In_Days;
+  let hours = diff_In_Hours - diff_In_Days * 24;
+  let minutes = diff_In_Minutes - diff_In_Hours * 60;
+  let seconds = diff_In_Seconds - diff_In_Minutes * 60;
+
+  if (hours < 10) {
+    hours = '0' + hours;
+  }
+  if (minutes < 10) {
+    minutes = '0' + minutes;
+  }
+  if (seconds < 10) {
+    seconds = '0' + seconds;
+  }
+
+  return <span>
+    {days + ' | ' + hours + ':' + minutes + ':' + seconds}
+  </span>
 }
 
 const mapStateToProps = (state) => {

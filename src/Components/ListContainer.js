@@ -33,7 +33,7 @@ const TabList = ({ loading, dispatch, url }) => {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      dispatch({ type: 'LOADED' })
+      dispatch({ type: 'LOADED' });
       setEvents(data);
     } catch (err) {
       console.log(err);
@@ -45,7 +45,7 @@ const TabList = ({ loading, dispatch, url }) => {
   }, [])
 
   const deleteEvent = id => {
-    const newEvents = events.filter(event => event.id !== id);
+    const newEvents = events.filter(event => event._id !== id);
     setEvents(newEvents);
   }
   return (
@@ -60,9 +60,9 @@ const TabList = ({ loading, dispatch, url }) => {
             <div className='empty-list'>Lista jest pusta</div>
           </DataFeedback>
         ) : (
-          events.map(event => {   //showing data
+          events.map((event, index) => {   //showing data
             const {
-              id,
+              _id,
               task,
               description,
               day,
@@ -72,8 +72,8 @@ const TabList = ({ loading, dispatch, url }) => {
               minute
             } = event;
             return (
-              <tr key={id}>
-                <td>{id}</td>
+              <tr key={_id}>
+                <td>{index + 1}</td>
                 <td>{task}</td>
                 <td>{description}</td>
                 <td>{day}/{month}/{year}</td>
@@ -81,7 +81,7 @@ const TabList = ({ loading, dispatch, url }) => {
                 <td><EventTimeCounter {...event} /></td>
                 <td>
                   <button type="button" className='button-delete'>
-                    <FaTrash className='fa-trash' onClick={() => deleteEvent(id)} />
+                    <FaTrash className='fa-trash' onClick={() => deleteEvent(_id)} />
                   </button>
                 </td>
               </tr>

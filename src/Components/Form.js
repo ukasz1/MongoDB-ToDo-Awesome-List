@@ -183,7 +183,7 @@ const Form = () => {
           {(hourError || minuteError) ? <span className='err-msg'>Niepoprawny czas!</span> : null}
         </div>
         <div className='form-submit-div'>
-          <button type="submit" className='submit-button'>Dodaj</button>
+          <button type="submit" className='submit-button' disabled>Dodaj</button>
         </div>
 
       </form>

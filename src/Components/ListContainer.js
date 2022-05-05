@@ -46,6 +46,15 @@ const TabList = ({ loading, dispatch, url }) => {
 
   const deleteEvent = id => {
     const newEvents = events.filter(event => event._id !== id);
+    try {
+      fetch(`${url}/${id}`, {
+        method: "DELETE",
+      })
+        .then(res => res.json())
+        .then(res => console.log(res))
+    } catch (error) {
+      console.log(error);
+    }
     setEvents(newEvents);
   }
   return (

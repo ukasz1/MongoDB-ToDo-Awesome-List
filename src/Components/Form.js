@@ -78,13 +78,15 @@ const Form = ({ url }) => {
       }
       else {
         setDateError(false);
+        const eventDate = new Date(newEvent.year, newEvent.month - 1, newEvent.day, newEvent.hour, newEvent.minute, 0);
+        const unixTime = eventDate.getTime() / 1000 / 60;
         fetch(url, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify(newEvent)
-        })
+          body: JSON.stringify({ ...newEvent, unixTime })
+        });
       }
     }
   }

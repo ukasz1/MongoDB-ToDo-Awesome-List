@@ -20,7 +20,7 @@ function App() {
       <TimeCounter />
       <main>
         <Header />
-        <Form />
+        <Form url={url} />
       </main>
       <ListContainer url={url} />
     </Provider>

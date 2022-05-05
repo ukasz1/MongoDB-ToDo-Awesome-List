@@ -17,6 +17,7 @@ const Form = ({ url }) => {
   }
   const [descriptionError, setDescriptionError] = useState(false);
   const [dateError, setDateError] = useState(false);
+  const [pastDate, setPastDate] = useState(false);
   const [hourError, setHourError] = useState(false);
   const [minuteError, setMinuteError] = useState(false);
 
@@ -36,14 +37,23 @@ const Form = ({ url }) => {
     else {
       setHourError(false);
     }
+    if (newEvent.hour.length === 1) {
+      setNewEvent({ ...newEvent, hour: '0' + newEvent.hour })
+    }
   }
   const minuteCheck = () => {
+    if (newEvent.minute.length === 1) {
+      setNewEvent({ ...newEvent, minute: '0' + newEvent.minute })
+    }
     const minuteNumber = Number(newEvent.minute);
     if (newEvent.minute === '' || minuteNumber < 0 || minuteNumber > 59) {
       setMinuteError(true);
     }
     else {
       setMinuteError(false);
+    }
+    if (newEvent.minute.length === 1) {
+      setNewEvent({ ...newEvent, minute: '0' + newEvent.minute })
     }
   }
   const validateAndSubmitForm = (e) => {
@@ -79,14 +89,22 @@ const Form = ({ url }) => {
       else {
         setDateError(false);
         const eventDate = new Date(newEvent.year, newEvent.month - 1, newEvent.day, newEvent.hour, newEvent.minute, 0);
-        const unixTime = eventDate.getTime() / 1000 / 60;
-        fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ ...newEvent, unixTime })
-        });
+        if (eventDate < new Date()) {
+          setPastDate(true);
+          e.preventDefault();
+        }
+        else {
+          setPastDate(false);
+          const unixTime = eventDate.getTime() / 1000 / 60;
+          const eventToSubmit = { ...newEvent, unixTime };
+          fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(eventToSubmit)
+          });
+        }
       }
     }
   }
@@ -160,6 +178,7 @@ const Form = ({ url }) => {
             })}
           </select>
           {dateError ? <span className='err-msg'>Niepoprawna data!</span> : null}
+          {pastDate ? <span className='err-msg'>Nie można ustawić przeszłej daty!</span> : null}
         </div>
 
         <div className='aspect'>

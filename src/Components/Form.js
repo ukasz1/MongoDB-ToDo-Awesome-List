@@ -5,7 +5,7 @@ import moment from 'moment'
 const Form = ({ url }) => {
   const [newEvent, setNewEvent] = useState({
     description: '',
-    task: '',
+    task: 'Praca',
     day: '',
     month: '',
     year: '',

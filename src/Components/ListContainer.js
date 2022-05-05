@@ -115,13 +115,15 @@ const DataFeedback = ({ children }) => {
 
 const EventTimeCounter = ({ day, month, year, hour, minute }) => {
   const [timeTrigger, setTimeTrigger] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => setTimeTrigger(!timeTrigger), 1000)
-  }, [timeTrigger])
-
   const futureDate = moment([year, month - 1, day, hour, minute]);
   const currentTime = moment();
+
+  useEffect(() => {
+    if (futureDate > currentTime) {
+      setTimeout(() => setTimeTrigger(!timeTrigger), 1000);
+    }
+  }, [timeTrigger])
+
   const diff_In_Days = futureDate.diff(currentTime, 'days');
   const diff_In_Hours = futureDate.diff(currentTime, 'hours');
   const diff_In_Minutes = futureDate.diff(currentTime, 'minutes');
@@ -141,12 +143,16 @@ const EventTimeCounter = ({ day, month, year, hour, minute }) => {
   if (seconds < 10) {
     seconds = '0' + seconds;
   }
-
-  return <span>
-    {days + ' | ' + hours + ':' + minutes + ':' + seconds}
-  </span>
+  if (futureDate > currentTime) {
+    return <span>
+      {days + ' | ' + hours + ':' + minutes + ':' + seconds}
+    </span>
+  } else {
+    return <span className='err-msg'>
+      {'0 | 00:00:00'}
+    </span>
+  }
 }
-
 const mapStateToProps = (state) => {
   return { loading: state.loading }
 }

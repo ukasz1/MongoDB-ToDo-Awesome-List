@@ -77,6 +77,7 @@ const Form = ({ url }) => {
     }
     if (Number(newEvent.day) < 1 || Number(newEvent.month) < 1 || Number(newEvent.year) <= 2021) {
       setDateError(true);
+      setPastDate(false);
       e.preventDefault();
     }
     else {
@@ -84,6 +85,7 @@ const Form = ({ url }) => {
       const newEventDate = moment([newEvent.year, (newEvent.month - 1).toString(), newEvent.day]);
       if (!newEventDate.isValid()) {  // checking number of days in month and leap year
         setDateError(true);
+        setPastDate(false);
         e.preventDefault();
       }
       else {

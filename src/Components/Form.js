@@ -2,10 +2,10 @@ import { days, months, years } from '../utils'
 import { useState } from 'react'
 import moment from 'moment'
 
-const Form = () => {
+const Form = ({ url }) => {
   const [newEvent, setNewEvent] = useState({
     description: '',
-    task: 'work',
+    task: '',
     day: '',
     month: '',
     year: '',
@@ -78,7 +78,13 @@ const Form = () => {
       }
       else {
         setDateError(false);
-        e.target.submit();
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newEvent)
+        })
       }
     }
   }
@@ -86,7 +92,7 @@ const Form = () => {
 
     <section className="form-container">
       <h5>Aby wprowadzić nowy event uzupełnij opis, określ deadline i naciśnij przycisk Dodaj.</h5>
-      <form className="event-form" onSubmit={validateAndSubmitForm}>
+      <form className="event-form">
         <div className="aspect">
           <label htmlFor="description">Opis </label>
           <input
@@ -110,10 +116,10 @@ const Form = () => {
             value={newEvent.task}
             onChange={fillInForm}
           >
-            <option value="work">Praca</option>
-            <option value="study">Nauka</option>
-            <option value="personal">Osobiste</option>
-            <option value="other">Inne</option>
+            <option value="Praca">Praca</option>
+            <option value="Nauka">Nauka</option>
+            <option value="Osobiste">Osobiste</option>
+            <option value="Inne">Inne</option>
           </select>
         </div>
         <div className="aspect">
@@ -183,7 +189,7 @@ const Form = () => {
           {(hourError || minuteError) ? <span className='err-msg'>Niepoprawny czas!</span> : null}
         </div>
         <div className='form-submit-div'>
-          <button type="submit" className='submit-button' disabled>Dodaj</button>
+          <button type="submit" className='submit-button' onClick={validateAndSubmitForm}>Dodaj</button>
         </div>
 
       </form>

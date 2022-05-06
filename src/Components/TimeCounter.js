@@ -11,7 +11,7 @@ const TimeCounter = () => {
 
   return (
     <div className="current-time">
-      Aktualny czas: <span>{moment().format('L')} | {today.toLocaleTimeString()}</span>
+      Current time: <span>{moment().format('L')} | {today.toLocaleTimeString()}</span>
     </div>
   )
 }

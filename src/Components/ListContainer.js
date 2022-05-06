@@ -66,7 +66,7 @@ const TabList = ({ loading, dispatch, url }) => {
       ) : (
         events.length === 0 ? (   //no data to show
           <DataFeedback>
-            <div className='empty-list'>Lista jest pusta</div>
+            <div className='empty-list'>The list is empty</div>
           </DataFeedback>
         ) : (
           events.map((event, index) => {   //showing data

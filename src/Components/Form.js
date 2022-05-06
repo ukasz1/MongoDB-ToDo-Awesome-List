@@ -5,7 +5,7 @@ import moment from 'moment'
 const Form = ({ url }) => {
   const [newEvent, setNewEvent] = useState({
     description: '',
-    task: 'Praca',
+    task: 'Work',
     day: '',
     month: '',
     year: '',
@@ -113,10 +113,10 @@ const Form = ({ url }) => {
   return <>
 
     <section className="form-container">
-      <h5>Aby wprowadzić nowy event uzupełnij opis, określ deadline i naciśnij przycisk Dodaj.</h5>
+      <h5>To create a new activity please collect the description, specify a deadline and click Add button.</h5>
       <form className="event-form">
         <div className="aspect">
-          <label htmlFor="description">Opis </label>
+          <label htmlFor="description">Description </label>
           <input
             type="text"
             name="description"
@@ -127,10 +127,10 @@ const Form = ({ url }) => {
             onBlur={descriptionCheck}
             required
           />
-          {descriptionError ? <span className='err-msg'>Opis nie może być pusty!</span> : null}
+          {descriptionError ? <span className='err-msg'>Description cannot be empty!</span> : null}
         </div>
         <div className="aspect">
-          <label htmlFor="task">Rodzaj zadania </label>
+          <label htmlFor="task">Task type </label>
           <select
             name="task"
             id="task"
@@ -138,14 +138,14 @@ const Form = ({ url }) => {
             value={newEvent.task}
             onChange={fillInForm}
           >
-            <option value="Praca">Praca</option>
-            <option value="Nauka">Nauka</option>
-            <option value="Osobiste">Osobiste</option>
-            <option value="Inne">Inne</option>
+            <option value="Work">Work</option>
+            <option value="Study">Study</option>
+            <option value="Personal">Personal</option>
+            <option value="Other">Other</option>
           </select>
         </div>
         <div className="aspect">
-          <label htmlFor="date">Data </label>
+          <label htmlFor="date">Date </label>
           <select
             id="day"
             name="day"
@@ -179,12 +179,12 @@ const Form = ({ url }) => {
               return <option key={index} value={index + 2021}>{year}</option>
             })}
           </select>
-          {dateError ? <span className='err-msg'>Niepoprawna data!</span> : null}
-          {pastDate ? <span className='err-msg'>Nie można ustawić przeszłej daty!</span> : null}
+          {dateError ? <span className='err-msg'>Incorrect date!</span> : null}
+          {pastDate ? <span className='err-msg'>Shall not set past date!</span> : null}
         </div>
 
         <div className='aspect'>
-          <label htmlFor="time">Godzina </label>
+          <label htmlFor="time">Time </label>
           <input
             type="text"
             name="hour"
@@ -209,10 +209,10 @@ const Form = ({ url }) => {
             onBlur={minuteCheck}
             required
           />
-          {(hourError || minuteError) ? <span className='err-msg'>Niepoprawny czas!</span> : null}
+          {(hourError || minuteError) ? <span className='err-msg'>Incorrect time!</span> : null}
         </div>
         <div className='form-submit-div'>
-          <button type="submit" className='submit-button' onClick={validateAndSubmitForm}>Dodaj</button>
+          <button type="submit" className='submit-button' onClick={validateAndSubmitForm}>Add</button>
         </div>
 
       </form>

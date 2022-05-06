@@ -35,6 +35,8 @@ main {
   padding: 20px;
   width: 800px;
   margin: 0 auto;
+  border: 1px solid grey;
+  border-radius: 5px;
 }
 
 h1 {
@@ -66,12 +68,6 @@ h5 {
   width: 150px;
   border: 3px solid orange;
   background: orange;
-}
-
-.form-container {
-  border: 1px solid grey;
-
-  border-radius: 5px;
 }
 
 .empty-line {
@@ -197,21 +193,27 @@ td {
 
 @media screen and (max-width: 500px) {
   .header-container {
-    width: 450px;
+    width: 90%;
   }
 
   .form-container {
-    padding: 5px;
-    width: 450px;
+    padding: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    border-left: 0;
+    border-right: 0;
   }
 
   h5 {
     margin-bottom: 0;
+    margin-left: 5px;
   }
 
   .form-description {
-    width: 300px;
-    margin-left: 5px;
+    width: 98.5%;
+    margin-top: 5px;
+    margin-left: 0;
   }
 
   table {

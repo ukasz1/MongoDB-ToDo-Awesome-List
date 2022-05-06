@@ -111,7 +111,6 @@ const Form = ({ url }) => {
     }
   }
   return <>
-
     <section className="form-container">
       <h5>To create a new activity please collect the description, specify a deadline and click Add button.</h5>
       <form className="event-form">
@@ -182,7 +181,7 @@ const Form = ({ url }) => {
             })}
           </select>
           {dateError ? <span className='err-msg'>Incorrect date!</span> : null}
-          {pastDate ? <span className='err-msg'>Shall not set past date!</span> : null}
+          {pastDate ? <span className='err-msg'>Cannot set past date!</span> : null}
         </div>
 
         <div className='aspect'>

@@ -194,3 +194,39 @@ td {
   color: red;
   padding: 5px;
 }
+
+@media screen and (max-width: 500px) {
+  .header-container {
+    width: 450px;
+  }
+
+  .form-container {
+    padding: 5px;
+    width: 450px;
+  }
+
+  h5 {
+    margin-bottom: 0;
+  }
+
+  .form-description {
+    width: 300px;
+    margin-left: 5px;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  th {
+    font-size: 0.7em;
+  }
+
+  td {
+    font-size: 0.7em;
+  }
+
+  .err-msg {
+    padding: 0;
+  }
+}

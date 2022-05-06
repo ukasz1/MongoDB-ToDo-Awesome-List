@@ -5,7 +5,7 @@ import { TimeCounter, Header, Form, ListContainer } from './Components/index'
 
 import reducer from './reducer';
 
-const url = 'api/v1/events';
+const url = 'https://mitkowski-todo-awesome-list.herokuapp.com/api/v1/events';
 //https://mitkowski-todo-awesome-list.herokuapp.com/api/v1/events
 
 const initialStore = {

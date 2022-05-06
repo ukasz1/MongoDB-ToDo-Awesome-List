@@ -112,7 +112,7 @@ const Form = ({ url }) => {
   }
   return <>
     <section className="form-container">
-      <h5>To create a new activity please collect the description, specify a deadline and click Add button.</h5>
+      <h5>To create a new activity please fill the description, specify a deadline and click Add button.</h5>
       <form className="event-form">
         <div className="aspect">
           <label htmlFor="description">Description </label>

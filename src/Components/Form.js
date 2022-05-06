@@ -125,6 +125,8 @@ const Form = ({ url }) => {
             value={newEvent.description}
             onChange={fillInForm}
             onBlur={descriptionCheck}
+            size="40"
+            maxlength="50"
             required
           />
           {descriptionError ? <span className='err-msg'>Description cannot be empty!</span> : null}

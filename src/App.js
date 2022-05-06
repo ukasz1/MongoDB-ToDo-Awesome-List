@@ -1,7 +1,6 @@
 import { createStore } from 'redux';
 import { Provider } from "react-redux";
 import { TimeCounter, Header, Form, ListContainer } from './Components/index'
-// import ListContainer from './Components/ListContainer'
 
 import reducer from './reducer';
 

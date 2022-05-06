@@ -21,5 +21,8 @@ This project is based on my previous one that was written in simple JS, PHP and 
 - COMPLETE PROJECT - <img src="https://github.com/ukasz1/pureJS_chess/blob/main/Useful-svg/done.svg"></img>
 <img src="https://github.com/ukasz1/essentials/blob/main/todo-awesome-list/view.jpg?raw=true" width="100%" />
 
+## Further development
+- Every item could receive a progress bar. It can be a graphical presentation of advancement status.
+
 ## Run project
 To run the project please clone this repository, open it, then open your command line and go with <code>npm start</code>. The project should run in the browser on <i>localhost:3000</i>.

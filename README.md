@@ -22,7 +22,7 @@ This project is based on my previous one that was written in simple JS, PHP and 
 <img src="https://github.com/ukasz1/essentials/blob/main/todo-awesome-list/view.jpg?raw=true" width="100%" />
 
 ## Further development
-- Every item could receive a progress bar. It can be a graphical presentation of advancement status.
+- Every item could receive a progress bar. It can be a graphical presentation of status advancement.
 
 ## Project run
 To run the project please clone this repository, open it, then open your command line and go with <code>npm install</code> and <code>npm start</code> at the end. The project should run in the browser on <i>localhost:3000</i>.

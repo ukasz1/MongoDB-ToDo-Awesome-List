@@ -1,6 +1,6 @@
 const Header = () => {
   return <div className="header-container">
-    <h1>ToDo Awesome</h1>
+    <h1>MongoDB ToDo Awesome List</h1>
     <div className="underline"></div>
   </div>
 }

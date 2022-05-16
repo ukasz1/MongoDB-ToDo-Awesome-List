@@ -1,4 +1,4 @@
-# ToDo Awesome List
+# MongoDB ToDo Awesome List
 A part of a MERN project. This is a React app with Redux.
 
 See 👉[online here](https://todo-awesome-list.netlify.app/)👈

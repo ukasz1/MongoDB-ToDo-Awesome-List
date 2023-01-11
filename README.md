@@ -3,6 +3,8 @@ A part of a MERN project. This is a React app with Redux.
 
 See 👉[online here](https://todo-awesome-list.netlify.app/)👈
 
+     Note: API serwer not working due to change the Heroku pricing policy. Need to migrate to Render.com
+
 The app shows a planned activities, with its description, deadline and timers for every item. There is also a form for submitting new activities. User can also remove single item. The data is stored in MongoDB with using my <a href="https://github.com/ukasz1/ToDo-Awesome-List-API">own API</a>. The API is a separate project to work independently. 
 
 This project is based on my previous one that was written in simple JS, PHP and SQL. You can <a href="https://github.com/ukasz1/PHP_TODO_list">find it here</a>👈

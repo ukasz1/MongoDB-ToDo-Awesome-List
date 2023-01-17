@@ -1,7 +1,9 @@
-# ToDo Awesome List
+# MongoDB ToDo Awesome List
 A part of a MERN project. This is a React app with Redux.
 
 See 👉[online here](https://todo-awesome-list.netlify.app/)👈
+
+     Note: API serwer not working due to change the Heroku pricing policy. Need to migrate to Render.com
 
 The app shows a planned activities, with its description, deadline and timers for every item. There is also a form for submitting new activities. User can also remove single item. The data is stored in MongoDB with using my <a href="https://github.com/ukasz1/ToDo-Awesome-List-API">own API</a>. The API is a separate project to work independently. 
 
@@ -22,7 +24,7 @@ This project is based on my previous one that was written in simple JS, PHP and 
 <img src="https://github.com/ukasz1/essentials/blob/main/todo-awesome-list/view.jpg?raw=true" width="100%" />
 
 ## Further development
-- Every item could receive a progress bar. It can be a graphical presentation of advancement status.
+- Every item could receive a progress bar. It can be a graphical presentation of status advancement.
 
 ## Project run
 To run the project please clone this repository, open it, then open your command line and go with <code>npm install</code> and <code>npm start</code> at the end. The project should run in the browser on <i>localhost:3000</i>.

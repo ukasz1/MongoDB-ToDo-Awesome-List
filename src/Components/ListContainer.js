@@ -59,9 +59,16 @@ const TabList = ({ loading, dispatch, url }) => {
   }
   return (
     <tbody>
-      {loading ? (                //loading icon
+      {loading ? (
         <DataFeedback>
-          <img src={loadingIcon} alt="loadingIcon" width="160" />
+          <div>
+            <div className='loading-info'>
+              Loading... Need about 30 seconds to run free server
+            </div>
+            <div>
+              <img src={loadingIcon} alt="loadingIcon" width="60" />
+            </div>
+          </div>
         </DataFeedback>
       ) : (
         events.length === 0 ? (   //no data to show
@@ -96,7 +103,8 @@ const TabList = ({ loading, dispatch, url }) => {
               </tr>
             )
           }))
-      )}
+      )
+      }
     </tbody >
   )
 }

@@ -167,6 +167,13 @@ td {
   color: rgb(128, 208, 255)
 }
 
+.loading-info {
+  font-size: 0.8em;
+  padding-top: 35px;
+  padding-bottom: 10px;
+  color: rgb(128, 208, 255);
+}
+
 .th1 {
   width: 3%;
 }
